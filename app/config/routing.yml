@@ -18,6 +18,10 @@ pagina_estatica:
     pattern: /sitio/{pagina}
     defaults: { _controller: OfertaBundle:Sitio:estatica }
 
+portada:
+    pattern:  /
+    defaults: { _controller:OfertaBundle:Default:portada }
+
 # Internal routing configuration to handle ESI
 # ****** WARNING ******
 # This route should be enabled with caution as it can open a security vulnerability
