@@ -2,13 +2,13 @@ parameters:
     database_driver: pdo_mysql
     database_host: localhost
     database_port: null
-    database_name: symfony
-    database_user: root
-    database_password: null
+    database_name: cupon-dev
+    database_user: cupon
+    database_password: cupon
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
     mailer_password: null
     locale: en
-    secret: c472c10f942de6895fba61c4b336e6ef2
+    secret: 1385ebcc877f4710fd96172844110477f
     database_path: null
