@@ -19,7 +19,7 @@ class DefaultController extends Controller
 
         $oferta = $em->getRepository('OfertaBundle:Oferta')->findOneBy(array(
             'ciudad'=> 1,
-            'fecha_publicacion' => new \DateTime('today')
+            'fecha_publicacion' => new \DateTime('today - 1 seconds')
         ));
 
         return $this->render(
