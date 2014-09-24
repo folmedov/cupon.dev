@@ -17,10 +17,7 @@ class DefaultController extends Controller
     public function portadaAction($ciudad) {
         $em = $this->getDoctrine()->getManager();
         
-        $oferta = $em->getRepository('OfertaBundle:Oferta')->findOneBy(array(
-            'ciudad' => $ciudad,
-            'fecha_publicacion' => new \DateTime('today - 1 seconds')
-        ));
+        $oferta = $em->getRepository('OfertaBundle:Oferta')->findOfertaDelDia($ciudad);
         
         if (!$oferta) {
             throw $this->createNotFoundException(
