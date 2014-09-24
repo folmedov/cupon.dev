@@ -14,18 +14,23 @@ class DefaultController extends Controller
         return $this->render('OfertaBundle:Default:ayuda.html.twig');
     }
     
-    public function portadaAction() {
+    public function portadaAction($ciudad) {
         $em = $this->getDoctrine()->getManager();
-
+        
         $oferta = $em->getRepository('OfertaBundle:Oferta')->findOneBy(array(
-            'ciudad'=> 1,
+            'ciudad' => $ciudad,
             'fecha_publicacion' => new \DateTime('today - 1 seconds')
         ));
-
-        return $this->render(
-                        'OfertaBundle:Default:portada.html.twig', 
-                        array('oferta' => $oferta)
-        );
+        
+        if (!$oferta) {
+            throw $this->createNotFoundException(
+                    'No se ha encontrado la oferta del día'
+            );
+        }
+        
+        return $this->render('OfertaBundle:Default:portada.html.twig', array(
+                    'oferta' => $oferta
+        ));
     }
 
 }

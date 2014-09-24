@@ -58,3 +58,7 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# Parametros de configuración de la aplicación
+parameters:
+    cupon.ciudad_por_defecto: '1'
