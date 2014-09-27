@@ -2,6 +2,7 @@
 
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\Yaml\Yaml;
 
 class AppKernel extends Kernel
 {
@@ -37,6 +38,8 @@ class AppKernel extends Kernel
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
+        Yaml::setPhpParsing(true);
         $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
+        Yaml::setPhpParsing(false);
     }
 }
