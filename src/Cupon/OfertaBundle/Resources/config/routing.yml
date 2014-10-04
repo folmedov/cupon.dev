@@ -1,3 +1,7 @@
 oferta_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: OfertaBundle:Default:index }
+
+oferta:
+    pattern:  /{ciudad}/oferta/{slug}
+    defaults: { _controller: OfertaBundle:Default:oferta }
