@@ -15,7 +15,7 @@ use Cupon\OfertaBundle\Util\Util;
  * Description of Tienda
  *
  * @author francisco
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Cupon\TiendaBundle\Entity\TiendaRepository")
  */
 class Tienda {
     //put your code here
