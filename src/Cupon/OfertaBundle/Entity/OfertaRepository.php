@@ -28,7 +28,7 @@ class OfertaRepository extends EntityRepository{
                 . 'JOIN     o.ciudad c '
                 . 'JOIN     o.tienda t '
                 . 'WHERE    o.revisada = true '
-                . '         AND o.fecha_publicacion < :fecha '
+                . '         AND o.fecha_publicacion = :fecha '
                 . '         AND c.slug = :ciudad '
                 . 'ORDER BY o.fecha_publicacion DESC';
         

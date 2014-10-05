@@ -9,8 +9,8 @@
     
     {% for oferta in ofertas %}
         {% include 'OfertaBundle:Default:includes/minioferta.html.twig' %}
-        {% else %}
-            <p>Esta ciudad todavía no ha publicado ninguna ofert</p>
+    {% else %}
+        <p>Esta ciudad todavía no ha publicado ninguna ofert</p>
     {% endfor %}
 {% endblock %}
 
