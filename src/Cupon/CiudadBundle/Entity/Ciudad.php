@@ -15,7 +15,7 @@ use Cupon\OfertaBundle\Util\Util;
  * Description of Ciudad
  *
  * @author francisco
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Cupon\CiudadBundle\Entity\CiudadRepository")
  */
 class Ciudad {
     //put your code here
