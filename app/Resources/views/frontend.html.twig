@@ -17,7 +17,7 @@
             <ul>
                 <li><a href="{{ path('portada', { 'ciudad':ciudadSeleccionada }) }}">Oferta del día</a></li>
                 <li><a href="{{ path('ciudad_recientes', { 'ciudad':ciudadSeleccionada }) }}">Ofertas recientes</a></li>
-                <li><a href="#">Mis ofertas</a></li>
+                <li><a href="{{ path('usuario_compras') }}">Mis ofertas</a></li>
                 <li>{% render "CiudadBundle:Default:listaCiudades" 
                        with { 'ciudad': ciudadSeleccionada } %}</li>
             </ul>
