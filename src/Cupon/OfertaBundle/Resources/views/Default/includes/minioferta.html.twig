@@ -1,9 +1,6 @@
 {# empty Twig template #}
-<<<<<<< HEAD
 {% set expirada = oferta.fechaExpiracion|date('YmdHis') < 'now'|date('YmdHis') %}
 
-=======
->>>>>>> 72d35bf9cc8591a42acdcbf8132dd19f8bfa2dd7
 <section class="oferta mini">
     <div class="descripcion">
         <h2>
@@ -14,7 +11,6 @@
                 {{ oferta.nombre }}
             </a>
         </h2>
-<<<<<<< HEAD
         {{ oferta.descripcion | mostrar_como_lista }}
         
         {% if not expirada %}
@@ -27,28 +23,14 @@
             {% else %}
                 Finalizada el {{ oferta.fechaExpiracion | date() }}
             {% endif %}
-=======
-            {{ oferta.descripcion | mostrar_como_lista }}
-        
-        <a class="boton" href="#">Comprar</a>
-        <div id="tiempo" class="estado">
-            <strong>Faltan</strong>: {{ oferta.fechaExpiracion | cuenta_atras }}
->>>>>>> 72d35bf9cc8591a42acdcbf8132dd19f8bfa2dd7
         </div>
     </div>
     
     <div class="galeria">
-<<<<<<< HEAD
         <img alt="Fotografía de la oferta" src="{{ asset(directorio_imagenes ~oferta.foto) }}">
         <p class="precio">
             {{ oferta.precio }} &euro; 
             <span>{{ descuento(oferta.precio, oferta.descuento) }}</span>
-=======
-        <img alt="Fotografía de la oferta" 
-             src="{{ asset('uploads/images/' ~oferta.foto) }}">
-        <p class="precio">{{ oferta.precio }} 
-            &euro; <span>{{ descuento(oferta.precio, oferta.descuento) }}</span>
->>>>>>> 72d35bf9cc8591a42acdcbf8132dd19f8bfa2dd7
         </p>
         <p>
             Disfruta de esta oferta en 
