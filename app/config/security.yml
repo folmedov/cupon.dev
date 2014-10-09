@@ -6,6 +6,12 @@ security:
             form_login:
                 login_path: usuario_login
                 check_path: usuario_login_check
+                use_referer: true
+                default_target_path: /usuario/compras
+                always_use_default_target_path: true
+            remember_me:
+                key:      cupon1234
+                lifetime: 3600
 
     access_control:
         - { path: ^/usuario/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -17,4 +23,4 @@ security:
             entity: { class: Cupon\UsuarioBundle\Entity\Usuario, property: email }
     
     encoders:
-        Cupon\UsuarioBundle\Entity\Usuario: { algorithm: sha512, iterations: 10 }
+        Cupon\UsuarioBundle\Entity\Usuario: { algorithm: plaintext }

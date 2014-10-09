@@ -8,15 +8,35 @@
     {% if error %}
         <div>{{ error.message }}</div>
     {% endif %}
-    <form action="{{ path('usuario_login_check') }}" method="post">
-        <label for="username">Usuario:</label>
-        <input type="text" id="username" name="_username"
-               value="{{ last_username }}" />
-        
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="_password" />
-        
-        <input type="submit" name="login" value="Acceder" />
-    </form>
+    <table>
+        <tr>
+            <td>
+                <label for="login_user">Email</label>
+            </td>
+            <td>
+                <input id="login_user" type="text" name="_username"
+                       value="{{ last_username | default('') }}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="login_pass">Contraseña</label>
+            </td>
+            <td>
+                <input id="login_pass" type="password" name="_password" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="checkbox" id="no_cerrar" name="_remember_me" checked />
+                <label for="no_cerrar">No cerrar sesión</label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Entrar" />
+            </td>
+        </tr>
+    </table>
 {% endblock %}
 {% block aside %}{% endblock %}
