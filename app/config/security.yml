@@ -6,12 +6,14 @@ security:
             form_login:
                 login_path: usuario_login
                 check_path: usuario_login_check
-                use_referer: true
-                default_target_path: /usuario/compras
+                default_target_path: usuario_compras
                 always_use_default_target_path: true
+            logout:
+                path: usuario_logout
             remember_me:
                 key:      cupon1234
                 lifetime: 3600
+            switch_user: { role: ROLE_USUARIO }
 
     access_control:
         - { path: ^/usuario/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

@@ -48,9 +48,12 @@ class DefaultController extends Controller
                 $sesion->get(SecurityContext::AUTHENTICATION_ERROR)
             );
         
+//        $usuario = $this->get('security.context')->getToken()->getUser();
+        
         return $this->render('UsuarioBundle:Default:cajaLogin.html.twig', array(
             'last_username' => $sesion->get(SecurityContext::LAST_USERNAME),
-            'error' => $error
+            'error' => $error,
+//            'usuario' => $usuario
         ));
     }
 
