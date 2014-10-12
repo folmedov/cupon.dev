@@ -2,12 +2,11 @@
 {% extends '::frontend.html.twig' %}
 
 {% block id 'usuario' %}
-{% block title %}Regístrate gratis como usuario{% endblock %}
+{% block title %}Ver / Modificar mis datos{% endblock %}
 
 {% block article %}
     <h1>{{ block('title') }}</h1>
-
-    <form action="{{ path('usuario_registro') }}" method="post" {{ form_enctype(formulario) }}>
+    <form action="{{ path('usuario_perfil') }}" method="post" {{ form_enctype(formulario) }}>
         
         <div class="errors">
             {{ form_errors(formulario) }}
@@ -28,6 +27,8 @@
 
             {{ form_row(formulario.email) }}
             {{ form_row(formulario.password) }}
+
+        </fieldset>
         
         <fieldset>
             <legend>Datos económicos</legend>
@@ -45,9 +46,6 @@
         
         {{ form_rest(formulario) }}
         
-        <input class="boton" type="submit" value="Registrarme" />
+        <input class="boton" type="submit" value="Guardar cambios" />
     </form>
-    
 {% endblock %}
-
-{% block aside %}{% endblock %}

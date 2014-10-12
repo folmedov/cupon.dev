@@ -15,7 +15,7 @@ use Cupon\CiudadBundle\Entity\Ciudad;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Cupon\UsuarioBundle\Entity\UsuarioRepository")
  * @DoctrineAssert\UniqueEntity("email")
- * @Assert\Callback(methods={"esDniValido"})
+ * @Assert\Callback(methods={"esDniValido", "esPasswordValido"})
  */
 class Usuario implements UserInterface
 {
@@ -54,7 +54,7 @@ class Usuario implements UserInterface
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
-     * @Assert\Length(min = 6)
+     * @Assert\Length(min=6)
      */
     private $password;
 
@@ -421,6 +421,15 @@ class Usuario implements UserInterface
 
     public function getUsername() {
         return $this->getEmail();
+    }
+    
+    public function esPasswordValido(ExecutionContext $context) {
+        $password = $this->getPassword();
+        
+        if (strlen($password)==0) {
+            $context->addViolationAtSubPath('password', sprintf($password.'INVALIDO!'), array(), null);
+            return;
+        }
     }
     
     public function esDniValido(ExecutionContext $context) {
