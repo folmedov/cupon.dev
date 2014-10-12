@@ -1,9 +1,15 @@
 {# empty Twig template #}
 {% if is_granted('ROLE_USUARIO') %}
+    {% for mensaje in app.session.flashbag.get('info') %}
+        <p class="info">{{ mensaje }}</p>
+    {% endfor %}
+    
     <p> Conectado como {{ app.user }} </p>
     <a href="#">Ver mi perfil</a>
     <a href="{{ path('usuario_logout') }}">Cerrar sesión</a>
 {% else %}
+    <a class="boton" href="{{ path('usuario_registro') }}">Regístrate</a>
+    
     <h2>Accede a tu cuenta</h2>
     <form action="{{ path('usuario_login_check') }}" method="post">
         {% if error %}

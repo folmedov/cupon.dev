@@ -3,14 +3,19 @@
 namespace Cupon\UsuarioBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Cupon\CiudadBundle\Entity\Ciudad;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\ExecutionContext;
+use Cupon\CiudadBundle\Entity\Ciudad;
 
 /**
  * Usuario
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Cupon\UsuarioBundle\Entity\UsuarioRepository")
+ * @DoctrineAssert\UniqueEntity("email")
+ * @Assert\Callback(methods={"esDniValido"})
  */
 class Usuario implements UserInterface
 {
@@ -41,6 +46,7 @@ class Usuario implements UserInterface
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\Email()
      */
     private $email;
 
@@ -48,6 +54,7 @@ class Usuario implements UserInterface
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
+     * @Assert\Length(min = 6)
      */
     private $password;
 
@@ -414,6 +421,41 @@ class Usuario implements UserInterface
 
     public function getUsername() {
         return $this->getEmail();
+    }
+    
+    public function esDniValido(ExecutionContext $context) {
+        $dni = $this->getDni();
+        
+        // Comprobar que el formato sea correcto
+        if (0 === preg_match("/\d{1,8}[a-z]/i", $dni)) {
+            $msg =    'El DNI introducido no tiene el formato correcto (entre 1 y '
+                    . '8 números seguidos de una letra, sin guiones y sin dejar '
+                    . 'ningún espacio en blanco)';
+            
+            $context->addViolationAtSubPath('dni', $msg, array(), null);
+            
+            return;
+        }
+        
+        // Comprobar que la letra cumple con el algoritmo
+        $numero = substr($dni, 0, -1);
+        $letra = strtoupper(substr($dni, -1));
+        
+        if ($letra != substr("TRWAGMYFPDXBNJZSQVHLCKE", strtr($numero, "XYZ", "012") % 23, 1)) {
+            $msg =    'La letra no coincide con el número del DNI. Comprueba que '
+                    . 'has escrito bien tanto el número como la letra';
+            $context->addViolationAtSubPath('dni', $msg, array(), null);
+            
+            return;
+        }
+        
+    }
+    
+    /**
+     * @Assert\True(message = "Debes tener al menos 18 años")
+     */
+    public function isMayorDeEdad() {
+        return $this->fecha_nacimiento <= new \DateTime('today - 18 years');
     }
 
 }
