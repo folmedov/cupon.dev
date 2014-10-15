@@ -44,7 +44,9 @@ class DefaultController extends Controller
         
         $ofertas = $em->getRepository('OfertaBundle:Oferta')->findRecientes($ciudad->getId());
         
-        return $this->render('CiudadBundle:Default:recientes.html.twig', 
+        $formato = $this->getRequest()->getRequestFormat();
+        
+        return $this->render('CiudadBundle:Default:recientes.'.$formato.'.twig', 
                 array(
                     'ciudad' => $ciudad, 
                     'cercanas' => $cercanas, 
