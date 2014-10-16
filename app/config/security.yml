@@ -16,9 +16,9 @@ security:
             switch_user: { role: ROLE_USUARIO }
 
     access_control:
-        - { path: ^/usuario/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/usuario/registro, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/usuario/*, roles: ROLE_USUARIO }
+        - { path: '^/[a-z]{2}/usuario/login', roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: '^/[a-z]{2}/usuario/registro', roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: '^/[a-z]{2}/usuario/*', roles: ROLE_USUARIO }
 
     providers:
         usuarios:
