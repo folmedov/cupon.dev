@@ -24,7 +24,7 @@ oferta:
         
 extranet:
     resource: "@TiendaBundle/Resources/config/extranet/routing.yml"
-    prefix:   /
+    prefix:   /extranet
 
 pagina_estatica:
     pattern: /{_locale}/sitio/{pagina}

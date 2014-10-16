@@ -1,2 +1,19 @@
-## YAML Template.
----
+extranet_portada:
+    pattern:  /
+    defaults: { _controller: TiendaBundle:Extranet:portada }
+
+extranet_oferta_nueva:
+    pattern:  /oferta/nueva
+    defaults: { _controller: TiendaBundle:Extranet:ofertaNueva }
+
+extranet_oferta_editar:
+    pattern:  /oferta/editar/{id}
+    defaults: { _controller: TiendaBundle:Extranet:ofertaEditar }
+
+extranet_oferta_ventas:
+    pattern:  /oferta/ventas/{id}
+    defaults: { _controller: TiendaBundle:Extranet:ofertaVentas }
+
+extranet_perfil:
+    pattern:  /perfil
+    defaults: { _controller: TiendaBundle:Extranet:perfil }
