@@ -1,30 +1,42 @@
 usuario:
     resource: "@UsuarioBundle/Resources/config/routing.yml"
-    prefix:   /usuario
+    prefix:   /{_locale}/usuario
+    requirements:
+        _locale: en|es
 
 tienda:
     resource: "@TiendaBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}/
+    requirements:
+        _locale: en|es
 
 ciudad:
     resource: "@CiudadBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}/
+    requirements:
+        _locale: en|es
 
 oferta:
     resource: "@OfertaBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}/
+    requirements:
+        _locale: en|es
 
 pagina_estatica:
-    pattern: /sitio/{pagina}
+    pattern: /{_locale}/sitio/{pagina}
     defaults: { _controller: OfertaBundle:Sitio:estatica }
+    requirements:
+        _locale: en|es
 
 _portada:
     pattern:  /
     defaults: { _controller: FrameworkBundle:Redirect:redirect, route: portada, ciudad: '%cupon.ciudad_por_defecto%' }
 
 portada:
-    pattern: /{ciudad}
-    defaults: { _controller: OfertaBundle:Default:portada }
+    pattern: /{_locale}/{ciudad}
+    defaults: { _controller: OfertaBundle:Default:portada, _locale: es }
+    requirements:
+        _locale: en|es
 
 # Internal routing configuration to handle ESI
 # ****** WARNING ******
