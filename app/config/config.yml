@@ -67,3 +67,10 @@ swiftmailer:
 # Parametros de configuración de la aplicación
 parameters:
     cupon.ciudad_por_defecto: 'barcelona'
+
+stof_doctrine_extensions:
+    default_locale:       es
+    translation_fallback: true
+    orm:
+        default:
+            translatable: true

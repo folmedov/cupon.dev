@@ -21,6 +21,10 @@ oferta:
     prefix:   /{_locale}/
     requirements:
         _locale: en|es
+        
+extranet:
+    resource: "@TiendaBundle/Resources/config/extranet/routing.yml"
+    prefix:   /
 
 pagina_estatica:
     pattern: /{_locale}/sitio/{pagina}
